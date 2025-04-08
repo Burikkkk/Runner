@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4980c9c0815bed40aeffe5b4c8a1fd8, type: 3}
+  m_Name: Suburbs
+  m_EditorClassIdentifier: 
+  segments:
+  - {fileID: 4093914140211412094, guid: 628a36c0dcbf1794aba2f8d2431a88cf, type: 3}
+  - {fileID: 6480447849417449874, guid: 05986404b6ae86648b7993e2fd6f438b, type: 3}
+  - {fileID: 7843819024134112278, guid: 7c343535005ad67478cf7c89e202eca8, type: 3}
