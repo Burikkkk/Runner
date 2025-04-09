@@ -24,4 +24,9 @@ public class Segment : MonoBehaviour
     {
         get { return end.position; }
     }
+
+    public Vector3 Start
+    {
+        get { return end.position; }
+    }
 }

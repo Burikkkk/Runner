@@ -411,6 +411,9 @@ MonoBehaviour:
   start: {fileID: 1985444457}
   themesList: {fileID: 11400000, guid: bc0dffd1082300c4da032f62e5db4bbb, type: 2}
   obstaclesList: {fileID: 11400000, guid: 8ae20ffb1167a064ba779585abe5fc4b, type: 2}
+  bonusesList: {fileID: 11400000, guid: ff0ef92d8a95abe48a9af4da0249adad, type: 2}
+  fishPrefab: {fileID: 184264, guid: 72649bcd31a2c27499e5d349a2bca5db, type: 3}
+  fishOffset: 2
   generatorTriggerPrefab: {fileID: 4307403589865043051, guid: 29bc7ebdb601c404f9497171fc8ad68b,
     type: 3}
 --- !u!4 &1550465912

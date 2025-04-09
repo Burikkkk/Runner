@@ -13,11 +13,15 @@ public class TrackGenerator : MonoBehaviour
     [SerializeField] private Transform start;
     [SerializeField] private TrackThemes themesList;
     [SerializeField] private TrackObstacles obstaclesList;
+    [SerializeField] private TrackBonuses bonusesList;
+    [SerializeField] private GameObject fishPrefab;
+    [SerializeField] private float fishOffset;
     [SerializeField] private GameObject generatorTriggerPrefab;
 
     private float[] lanesX;
     private int themesCount;
     private int obstaclesCount;
+    private int bonusesCount;
     private TrackTheme currentTheme;
     private Vector3 lastSegmentPosition;
 
@@ -47,6 +51,11 @@ public class TrackGenerator : MonoBehaviour
         {
             var newSegment = GenerateNewSegment();
             GenerateSegmentObstacles(newSegment);
+            GenerateSegmentFish(newSegment);
+            if (Random.Range(0.0f, 1.0f) < 0.2f)    // 10% шанс на бонус
+            {
+                GenerateSegmentBonus(newSegment);
+            }
             if (i == count - 1) // последний из новых сегментов
             {
                 GenerateTrigger(newSegment);
@@ -120,5 +129,33 @@ public class TrackGenerator : MonoBehaviour
         }
 
         return lanes;
+    }
+
+    private void GenerateSegmentFish(Segment segment)
+    {
+        var positionZ = segment.End.z + segment.Length * 0.3f;
+        var maxFishCount = (int)(segment.Length * 0.6f / fishOffset);
+        int fishCount = Random.Range(2, maxFishCount);
+        //var positionZ = segment.End.z + (segment.Length - fishCount * fishOffset) * 0.5f;
+        int lanesCount = Random.Range(1, 4);
+
+        float[] lanes = GetRandomLanes(lanesCount);  // другие в рандомных
+        
+        for (int i = 0; i < fishCount; i++)
+        {
+            for (int j = 0; j < lanesCount; j++)
+            {
+                Instantiate(fishPrefab, new Vector3(lanes[j], 0.0f, positionZ), Quaternion.identity, transform);
+            }
+            positionZ += fishOffset;
+        }
+    }
+    
+    private void GenerateSegmentBonus(Segment segment)
+    {
+        var positionZ = segment.End.z + segment.Length * 0.5f;
+        var bonusPrefab = bonusesList[Random.Range(0, bonusesCount)];
+        var randomLane = GetRandomLanes(1)[0];
+        Instantiate(bonusPrefab, new Vector3(randomLane, 0.3f, positionZ), Quaternion.identity, transform);
     }
 }
