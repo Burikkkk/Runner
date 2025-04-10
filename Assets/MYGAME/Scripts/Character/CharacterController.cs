@@ -12,24 +12,14 @@ public class CharacterController : MonoBehaviour
 	public float laneChangeTime = 0.05f;
     private Animator animator;
 	public float trackSpeed=10.0f;
-	public int coins { get { return m_Coins; } set { m_Coins = value; } }
 	public bool isJumping { get { return m_Jumping; } }
 	public bool isSliding { get { return m_Sliding; } }
-
-	[Header("Controls")]
-	public float jumpLength = 2.0f;     // Distance jumped
-	public float jumpHeight = 1.2f;
-	public float slideLength = 2.0f;
-
-    protected int m_Coins;
+	
+	public AudioClip deathSound;
 
 	protected bool m_IsRunning;
-	
-    protected float m_JumpStart;
     protected bool m_Jumping;
-
 	protected bool m_Sliding;
-	protected float m_SlideStart;
 
 
     protected int m_CurrentLane = k_StartingLane;
@@ -37,12 +27,7 @@ public class CharacterController : MonoBehaviour
 
 
     protected const int k_StartingLane = 1;
-    protected const float k_GroundingSpeed = 80f;
-
-    protected const float k_ShadowGroundOffset = 0.01f;
-    protected const float k_TrackSpeedToJumpAnimSpeedRatio = 0.6f;
-    protected const float k_TrackSpeedToSlideAnimSpeedRatio = 0.9f;
-
+    
     static int s_DeadHash = Animator.StringToHash("Dead");
     static int s_RunStartHash = Animator.StringToHash("runStart");
     static int s_MovingHash = Animator.StringToHash("Moving");
@@ -54,7 +39,6 @@ public class CharacterController : MonoBehaviour
     protected void Awake ()
     {
         m_Sliding = false;
-        m_SlideStart = 0.0f;
 	    m_IsRunning = true;
 		animator= GetComponent<Animator>();
     }
@@ -129,6 +113,20 @@ public class CharacterController : MonoBehaviour
 		}
 	}
 
+    public void Die()
+    {
+	    StopMoving();
+	    StopJumping();
+	    StopSliding();
+	    animator.SetBool(s_DeadHash, true);
+	    LevelManager.instance.audio.PlayOneShot(deathSound);
+    }
+
+    public void EndDeathAnim()
+    {
+	    LevelManager.instance.EndGame();
+    }
+
     public void Jump()
     {
 	    if (!m_IsRunning)
@@ -136,15 +134,8 @@ public class CharacterController : MonoBehaviour
 	    
         if (!m_Jumping)
         {
-			// if (m_Sliding)
-			// 	StopSliding();
-
-			//float correctJumpLength = jumpLength * (1.0f + trackManager.speedRatio);
-            //float animSpeed = k_TrackSpeedToJumpAnimSpeedRatio * (trackManager.speed / correctJumpLength);
-
             animator.SetFloat(s_JumpingSpeedHash, 1.0f);
             animator.SetBool(s_JumpingHash, true);
-			//m_Audio.PlayOneShot(character.jumpSound);
 			m_Jumping = true;
         }
     }
@@ -166,15 +157,9 @@ public class CharacterController : MonoBehaviour
 		    if (m_Jumping)
 		        StopJumping();
 
-            //float correctSlideLength = slideLength * (1.0f + trackManager.speedRatio); 
-			//m_SlideStart = trackManager.worldDistance;
-            //float animSpeed = k_TrackSpeedToJumpAnimSpeedRatio * (trackManager.speed / correctSlideLength);
-
 			animator.SetFloat(s_JumpingSpeedHash, 1.0f);
 			animator.SetBool(s_SlidingHash, true);
-			//m_Audio.PlayOneShot(slideSound);
 			m_Sliding = true;
-			
 		}
 	}
 
@@ -196,12 +181,11 @@ public class CharacterController : MonoBehaviour
 	{
 		trackSpeed = 10.0f;
 		yield return new WaitForSeconds(10.0f);
+		trackSpeed = 13.0f;
+		yield return new WaitForSeconds(10.0f);
 		trackSpeed = 15.0f;
 		yield return new WaitForSeconds(10.0f);
 		trackSpeed = 20.0f;
 		yield return new WaitForSeconds(10.0f);
 	}
-
-
-    
 }

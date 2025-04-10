@@ -10,6 +10,10 @@ public class LevelManager : MonoBehaviour
     public float currentBonus = 1.0f;
     public float bonusTime = 5.0f;
     public bool bonusActive;
+    public GameObject looseCanvas;
+
+    public AudioSource audio;
+    public AudioClip bonusSound;
 
     private void Awake()
     {
@@ -23,9 +27,15 @@ public class LevelManager : MonoBehaviour
     {
         fishCount += 1 * (int)currentBonus;
     }
+
+    public void EndGame()
+    {
+        looseCanvas.SetActive(true);
+    }
     
     public void ActivateBonus()
     {
+        audio.PlayOneShot(bonusSound);
         StartCoroutine(StartBonus());
     }
 

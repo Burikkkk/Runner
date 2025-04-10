@@ -24,5 +24,9 @@ public class PlayerCollider : MonoBehaviour
             LevelManager.instance.ActivateBonus();
             Destroy(other.gameObject);
         }
+        else if (other.gameObject.CompareTag("Obstacle"))
+        {
+            controller.Die();
+        }
     }
 }

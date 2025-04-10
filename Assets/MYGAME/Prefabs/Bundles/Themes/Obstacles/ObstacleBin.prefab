@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2507297870209094348}
   - component: {fileID: 6756785413556767442}
   - component: {fileID: 2383070054123001098}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: BinBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,9 +96,9 @@ GameObject:
   - component: {fileID: 6395632117939582999}
   - component: {fileID: 4546897516590926404}
   - component: {fileID: 4384785831162903159}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ObstacleBin
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 4173587338291903136}
   - component: {fileID: 1398452381810553277}
   - component: {fileID: 5255556264158080724}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: BinTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
