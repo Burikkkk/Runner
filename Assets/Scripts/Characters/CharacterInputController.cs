@@ -404,7 +404,7 @@ public class CharacterInputController : MonoBehaviour
 
     public void UseConsumable(Consumable c)
     {
-		characterCollider.audio.PlayOneShot(powerUpUseSound);
+		characterCollider.GetComponent<AudioSource>().PlayOneShot(powerUpUseSound);
 
         for(int i = 0; i < m_ActiveConsumables.Count; ++i)
         {

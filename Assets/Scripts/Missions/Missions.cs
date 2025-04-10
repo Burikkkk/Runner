@@ -182,7 +182,7 @@ public class BarrierJumpMission : MissionBase
     {
         if(manager.characterController.isJumping)
         {
-            Vector3 boxSize = manager.characterController.characterCollider.collider.size + k_CharacterColliderSizeOffset;
+            Vector3 boxSize = /*manager.characterController.characterCollider.GetComponent<Collider>().size + */ k_CharacterColliderSizeOffset;
             Vector3 boxCenter = manager.characterController.transform.position - Vector3.up * boxSize.y * 0.5f;
 
             int count = Physics.OverlapBoxNonAlloc(boxCenter, boxSize * 0.5f, m_Hits);
