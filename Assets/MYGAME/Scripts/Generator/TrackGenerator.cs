@@ -10,7 +10,7 @@ public class TrackGenerator : MonoBehaviour
 {
     [SerializeField] private int newSegmentsCount;
     [SerializeField] private float laneOffset = 1.0f;
-    [SerializeField] private Transform start;
+    public Transform start;
     [SerializeField] private TrackThemes themesList;
     [SerializeField] private TrackObstacles obstaclesList;
     [SerializeField] private TrackBonuses bonusesList;
@@ -18,7 +18,8 @@ public class TrackGenerator : MonoBehaviour
     [SerializeField] private float fishOffset;
     [SerializeField] private GameObject generatorTriggerPrefab;
 
-    private float[] lanesX;
+    [HideInInspector]
+    public float[] lanesX;
     private int themesCount;
     private int obstaclesCount;
     private int bonusesCount;
