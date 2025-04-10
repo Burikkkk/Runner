@@ -20,11 +20,9 @@ public class Score : MonoBehaviour
     private void WriteToFile(string fileName)
     {
         string path = Path.Combine(Application.persistentDataPath, fileName);
-
         string json = JsonUtility.ToJson(new PlayerInfoList(players), true);
         File.WriteAllText(path, json);
-
-        Debug.Log($"Data written to file at {path}");
+               
     }
 
     private List<PlayerInfo> ReadFromFile(string fileName)
@@ -35,16 +33,10 @@ public class Score : MonoBehaviour
         {
             string json = File.ReadAllText(path);
             PlayerInfoList wrapper = JsonUtility.FromJson<PlayerInfoList>(json);
-
-            Debug.Log("Data read from file:");
-            foreach (var player in wrapper.players)
-                Debug.Log($"{player.playerName}: {player.coins}");
-
             return wrapper.players;
         }
         else
         {
-            Debug.LogWarning("File not found at path: " + path);
             return null;
         }
     }
