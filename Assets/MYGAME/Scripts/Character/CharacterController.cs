@@ -102,7 +102,7 @@ public class CharacterController : MonoBehaviour
         {
             ChangeLane(1);
         }
-        else if(Input.GetKeyDown(KeyCode.W))
+        else if(Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }

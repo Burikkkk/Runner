@@ -58,10 +58,11 @@ public class Score : MonoBehaviour
         for (int i = 0; i < topPlayers.Count; i++)
         {
             var player = topPlayers[i];
+            scoreUIlist[i].gameObject.SetActive(true);
             scoreUIlist[i].number.text = (i + 1).ToString();
             scoreUIlist[i].playerName.text = player.playerName;
             scoreUIlist[i].score.text = player.coins.ToString();
-
+            
         }
     }
 

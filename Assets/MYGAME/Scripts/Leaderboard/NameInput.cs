@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI; // Если ты используешь TMP, замени на using TMPro;
+using UnityEngine.UI; 
 using TMPro;
 public class NameInfo : MonoBehaviour
 {
@@ -20,7 +20,7 @@ public class NameInfo : MonoBehaviour
         }
 
         scoreScript.AddPlayer(playerName, coins);
-        Debug.Log($"Сохранён игрок: {playerName} с {coins} монетами");
+        //Debug.Log($"Сохранён игрок: {playerName} с {coins} монетами");
 
       
     }
