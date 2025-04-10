@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public float bonusTime = 5.0f;
     public bool bonusActive;
     public GameObject looseCanvas;
+    public Text looseFishCountText;
 
     public AudioSource audio;
     public AudioClip bonusSound;
@@ -31,6 +33,7 @@ public class LevelManager : MonoBehaviour
     public void EndGame()
     {
         looseCanvas.SetActive(true);
+        looseFishCountText.text = fishCount.ToString();
     }
     
     public void ActivateBonus()
