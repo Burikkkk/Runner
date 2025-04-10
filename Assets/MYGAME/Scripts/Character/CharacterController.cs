@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Serialization;
@@ -61,6 +62,7 @@ public class CharacterController : MonoBehaviour
     private void Start()
     {
 		StartRunning();
+		StartSpeedIncrease();
     }
 
 
@@ -183,6 +185,21 @@ public class CharacterController : MonoBehaviour
 			animator.SetBool(s_SlidingHash, false);
 			m_Sliding = false;
 		}
+	}
+	
+	public void StartSpeedIncrease()
+	{
+		StartCoroutine(IncreaseTeam());
+	}
+
+	private IEnumerator IncreaseTeam()
+	{
+		trackSpeed = 10.0f;
+		yield return new WaitForSeconds(10.0f);
+		trackSpeed = 15.0f;
+		yield return new WaitForSeconds(10.0f);
+		trackSpeed = 20.0f;
+		yield return new WaitForSeconds(10.0f);
 	}
 
 
