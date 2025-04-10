@@ -2027,7 +2027,7 @@ PrefabInstance:
     - target: {fileID: 9133821273467772255, guid: 03fa14dc6da26664aa22088bf3178a4a,
         type: 3}
       propertyPath: laneChangeTime
-      value: 0.08
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9133821273467772255, guid: 03fa14dc6da26664aa22088bf3178a4a,
         type: 3}
