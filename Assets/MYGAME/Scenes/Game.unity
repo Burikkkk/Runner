@@ -1138,6 +1138,7 @@ MonoBehaviour:
   looseFishCountText: {fileID: 1584635600}
   audio: {fileID: 1911258484}
   bonusSound: {fileID: 8300000, guid: 2ea26c7f864d39148b3b0d8aca26b5ab, type: 3}
+  coinSound: {fileID: 8300000, guid: 641b2813d25a03e40b2e75dcb69e6122, type: 3}
 --- !u!4 &755318900
 Transform:
   m_ObjectHideFlags: 0

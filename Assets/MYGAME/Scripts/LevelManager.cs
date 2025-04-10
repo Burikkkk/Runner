@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
 
     public AudioSource audio;
     public AudioClip bonusSound;
+    public AudioClip coinSound;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class LevelManager : MonoBehaviour
 
     public void AddFish()
     {
+        audio.PlayOneShot(coinSound);
         fishCount += 1 * (int)currentBonus;
     }
 
