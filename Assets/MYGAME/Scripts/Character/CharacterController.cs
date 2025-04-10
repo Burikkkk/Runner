@@ -134,6 +134,7 @@ public class CharacterController : MonoBehaviour
 	    
         if (!m_Jumping)
         {
+	        StopSliding();
             animator.SetFloat(s_JumpingSpeedHash, 1.0f);
             animator.SetBool(s_JumpingHash, true);
 			m_Jumping = true;
@@ -154,9 +155,7 @@ public class CharacterController : MonoBehaviour
 		if (!m_Sliding)
 		{
 
-		    if (m_Jumping)
-		        StopJumping();
-
+			StopJumping();
 			animator.SetFloat(s_JumpingSpeedHash, 1.0f);
 			animator.SetBool(s_SlidingHash, true);
 			m_Sliding = true;
@@ -179,13 +178,8 @@ public class CharacterController : MonoBehaviour
 
 	private IEnumerator IncreaseTeam()
 	{
-		trackSpeed = 10.0f;
+		trackSpeed += 2.0f;
 		yield return new WaitForSeconds(10.0f);
-		trackSpeed = 13.0f;
-		yield return new WaitForSeconds(10.0f);
-		trackSpeed = 15.0f;
-		yield return new WaitForSeconds(10.0f);
-		trackSpeed = 20.0f;
-		yield return new WaitForSeconds(10.0f);
+		StartSpeedIncrease();
 	}
 }
