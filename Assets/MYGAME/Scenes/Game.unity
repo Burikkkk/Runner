@@ -5150,7 +5150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blobShadow: {fileID: 3599251118460250983}
-  laneChangeTime: 0.8
+  laneChangeTime: 22
   trackSpeed: 10
   deathSound: {fileID: 8300000, guid: 906353fd4c3f6214b92a27603e5ffdcc, type: 3}
   generator: {fileID: 1550465911}
