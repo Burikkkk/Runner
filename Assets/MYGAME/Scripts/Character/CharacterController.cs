@@ -9,7 +9,7 @@ public class CharacterController : MonoBehaviour
 {
 
 	public GameObject blobShadow;
-	public float laneChangeTime = 0.05f;
+	public float laneChangeTime;
     private Animator animator;
 	public float trackSpeed=10.0f;
 	public bool isJumping { get { return m_Jumping; } }
@@ -89,7 +89,7 @@ public class CharacterController : MonoBehaviour
     {
 		if (m_IsRunning)
 		{
-			var lerpPosition = Vector3.Lerp(transform.position, m_TargetPosition, laneChangeTime);
+			var lerpPosition = Vector3.Lerp(transform.position, m_TargetPosition, laneChangeTime * Time.deltaTime);
 			var deltaX = lerpPosition.x - transform.position.x;
 			transform.Translate(deltaX, 0.0f, trackSpeed*Time.deltaTime);	
 		}
