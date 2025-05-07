@@ -43,8 +43,9 @@ public class Score : MonoBehaviour
 
     private void DisplayScore()
     {
+        if (scoreUIlist.Count() == 0) return;
         var topPlayers = players.OrderByDescending(p => p.coins).Take(10).ToList();
-
+        
         string result = "";
 
         for (int i = 0; i < topPlayers.Count; i++)
